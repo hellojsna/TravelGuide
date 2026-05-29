@@ -1,0 +1,95 @@
+/* https://corp.gmarket.com/fonts/ */
+@import url("GmarketSans.css"); /* GmarketSans 서체. 로고 및 여행지 헤더 텍스트 등 디자인 필요한 곳에 사용. */
+/* https://github.com/orioncactus/pretendard/tree/main/packages/pretendard-gov */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-gov.min.css"); /* 나머지 모든 곳에 사용할 Pretendard GOV */
+
+:root {
+    --themeColor: #0037aa; /* 사이트 전체에서 사용할 테마 색상 변수로 지정 */
+}
+
+* {
+    /* 별도로 GmarketSans 서체 지정하지 않은 모든 요소의 기본 서체 Pretendard GOV로 지정 */
+    font-family: "Pretendard GOV", sans-serif;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    /* 기본적인 요소들의 margin padding 초기화 */
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    /* 헤더 display 타입 flex로 지정 (2단 구성) */
+    display: flex;
+    flex-direction: column;
+}
+
+.headerTop {
+    display: flex;
+    justify-content: space-between; /* 헤더 로고, 검색창, 로그인/회원가입 링크 양 끝 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 1.5rem 2rem; /* 패딩 */
+    background-color: var(--themeColor); /* 헤더 배경색 테마 색상으로 지정 */
+}
+.headerTop a {
+    margin: 0 0.5rem; /* 로그인/회원가입 링크 사이 간격 */
+    color: #ffffff; /* 로그인/회원가입 링크 텍스트 색상 흰색 */
+    text-decoration: none; /* 로그인/회원가입 링크 밑줄 제거 */
+    font-size: 1rem; /* 로그인/회원가입 링크 폰트 크기 */
+}
+
+.headerBottom {
+    text-align: center; /* 헤더 하단 메뉴 텍스트 중앙 정렬 */
+    padding: 0.6rem 0; /* 헤더 하단 메뉴 패딩 */
+    background-color: #f1f1fc; /* 헤더 하단 메뉴 배경색 연한 회색으로 지정 */
+}
+
+.headerBottom a {
+    margin: 0 1rem; /* 헤더 하단 메뉴 링크 사이 간격 */
+    color: #333333; /* 헤더 하단 메뉴 링크 색상 진한 회색으로 지정 */
+    text-decoration: none; /* 헤더 하단 메뉴 링크 밑줄 제거 */
+    font-size: 1rem; /* 헤더 하단 메뉴 링크 폰트 크기 */
+    transition: color 0.3s ease; /* 커서 올렸을 때 색상 변경 부드럽게 */
+}
+
+.headerBottom a:hover {
+    color: var(--themeColor); /* 헤더 하단 메뉴 링크에 커서 올렸을 때 테마 색상으로 변경 */
+}
+
+header h1 {
+    font-family: "GmarketSans", sans-serif;
+    /* 헤더 로고 부분 텍스트 폰트 */
+    font-size: 2rem;
+    color: #ffffff;
+}
+
+header input {
+    width: 20rem; /* 검색창 width 20rem */
+    padding: 0.5rem 1rem; /* 검색창 패딩 */
+    border: 1px solid #cccccc; /* 1px 회색 테두리 */
+    border-radius: 5px; /* 동글동글 */
+    font-size: 1rem; /* 검색창 폰트 크기 */
+}
+
+footer { /* 푸터 */
+    background-color: #f1f1fc;
+    padding: 2rem 1rem; /* 패딩 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    color: #666666;
+    font-size: 0.9rem; /* 폰트 살짝 작게 */
+}
+
+footer a {
+    color: var(--themeColor);
+    text-decoration: none;
+    margin: 0 0.5rem;
+}

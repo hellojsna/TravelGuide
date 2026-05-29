@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행지 추천</title>
+    <style>
+        @import url("resources/css/main.css"); /* 공통 스타일 */
+        @import url("resources/css/index.css"); /* index.html 스타일 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="headerTop">
+            <a href="index.html">
+                <h1>여행지 추천</h1>
+            </a>
+            <input type="text" placeholder="여행지를 검색해보세요!" />
+            <div id="authLinkContainer">
+                <a href="signin.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+        <div class="headerBottom">
+            <a href="#">모든 여행지</a>
+            <a href="#">테마별 추천</a>
+            <a href="#">인기 여행지</a>
+            <a href="#">새 여행지 등록</a>
+        </div>
+    </header>
+    <section class="mainBanner">
+        <p>오늘의 추천 여행지를 만나보세요.</p>
+        <div class="mainBannerItemContainer">
+            <div class="mainBannerItem">
+                <span class="itemTitle">Seoul</span>
+            </div>
+            <div class="mainBannerItem">
+                <span class="itemTitle">Osaka</span>
+            </div>
+            <div class="mainBannerItem">
+                <span class="itemTitle">Kyoto</span>
+            </div>
+            <div class="mainBannerItem">
+                <span class="itemTitle">Jeju</span>
+            </div>
+        </div>
+    </section>
+    <a href="#">
+        <img class="wideAd" src="resources/images/BannerAd.jpeg">
+    </a>
+    <section class="siteIntro">
+        <h2>여행지 추천 웹 사이트는</h2>
+        <p>다양한 여행 정보를 쉽게 확인할 수 있는 플랫폼입니다.<br>
+        다양한 여행지, 최고의 여행 시즌, 맛있는 음식, 그리고 필수 방문 명소 등<br>
+        자세한 정보를 알아보고 완벽한 여행을 계획해보세요.</p>
+    </section>
+    <section class="cardSection">
+        <div class="cardSectionHeader">
+            <h2>테마별 추천</h2>
+        </div>
+        <div class="cardGrid">
+            <a class="card" href="#">
+                <div class="cardImage" style="background-color: #60329580;"></div>
+                <div class="cardText">
+                    <h3>당일치기</h3>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="cardImage" style="background-color: #cc5d0c80;"></div>
+                <div class="cardText">
+                    <h3>나 혼자</h3>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="cardImage" style="background-color: #4d561380;"></div>
+                <div class="cardText">
+                    <h3>가족</h3>
+                </div>
+            </a>
+            <a class="card more" href="#">
+                <h3>더보기</h3>
+            </a>
+        </div>
+    </section>
+    <section class="cardSection">
+        <div class="cardSectionHeader">
+            <h2>실시간 인기 여행지</h2>
+        </div>
+        <div class="cardGrid">
+            <a class="card" href="#">
+                <div class="cardImage seoul"></div>
+                <div class="cardText">
+                    <h3>서울</h3>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="cardImage osaka"></div>
+                <div class="cardText">
+                    <h3>오사카</h3>
+                </div>
+            </a>
+            <a class="card" href="#">
+                <div class="cardImage kyoto"></div>
+                <div class="cardText">
+                    <h3>교토</h3>
+                </div>
+            </a>
+            <a class="card more" href="#">
+                <h3>더보기</h3>
+            </a>
+        </div>
+    </section>
+    <footer>
+        <p>여행지 추천 <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
+        <p>Copyright © 2026 Js Na. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

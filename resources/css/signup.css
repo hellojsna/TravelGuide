@@ -1,0 +1,152 @@
+main {
+    /* main 요소 child 중앙 정렬 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+main button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: 1px solid var(--purple);
+    border-radius: 3px;
+    color: var(--purple);
+    background: none;
+    font-size: 1rem;
+    text-align: center !important; /* important 안 붙이면 인증번호 받기 버튼 텍스트 왼쪽으로 붙음 */
+    cursor: pointer;
+}
+
+#registerSubmitButton {
+    /* 회원가입 버튼 */
+    width: 50%;
+    background-color: var(--purple);
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 10%; /* 버튼 하단 여백 */
+    padding: 0.9rem 1.5rem;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+button:disabled {
+    /* 비활성화된 버튼 */
+    opacity: 0.2; /* 약간 투명하게 */
+    filter: grayscale(1); /* 회색으로 필터*/
+}
+
+form {
+    /* form 요소 width 600px까지 꽉 채우기 & child 정렬 */
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 2rem; /* 상단 여백 */
+}
+
+form>.formItem {
+    /* form 하위 formItem class를 가진 요소 display 속성 grid로 정의. */
+    display: grid;
+    align-items: center; /* formItem 요소 하위 요소 중앙 정렬 */
+    grid-template-columns: 0.75fr 2fr 0.75fr; /* 0.75 : 2 : 0.75 비율로 grid */
+    width: 100%;
+    margin: 1.5rem 0;
+    gap: 0.5em; /* formItem 하위 요소 간격 0.5em */
+}
+
+form>.formItem>* {
+    /* form 하위 formItem class 요소 하위 모든 요소의 텍스트 좌측 정렬 */
+    text-align: left;
+}
+
+form>.formItem.required>.itemLabel::after,
+form .requiredHint::before {
+    /* form 하위 formItem, required class를 모두 가진 요소 뒤에 별표 표시 */
+    /* form 하위 requiredHint class를 가진 요소 (필수입력사항 안내) 앞에 별표 표시 */
+    content: '*';
+    color: red;
+}
+
+form .requiredHint {
+    /* form 하위 requiredHint class를 가진 요소 (필수입력사항 안내) 텍스트 우측 정렬 */
+    width: 100%;
+    text-align: right;
+    font-size: 0.75em;
+}
+
+.formInput {
+    /* input 요소 디자인 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1px solid #00000030;
+    border-radius: 3px;
+}
+
+.formInput.noOutline {
+    /* 아웃라인 없는 요소 */
+    outline: none;
+}
+
+.formInput * {
+    display: inline;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.formInput input,
+.formInput select,
+.formInput button.inputButton {
+    padding: 0.75rem;
+    box-sizing: border-box;
+}
+
+.formInput input,
+.formInput select {
+    border: none;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.formInput:focus-within {
+    outline: 1px solid #000000;
+}
+
+.formInput input:focus,
+.formInput select:focus {
+    outline: none !important;
+}
+
+.formInput>span>input[type=radio] {
+    width: auto;
+}
+
+#userEmailDomain {
+    display: none;
+    position: absolute;
+    width: 85%;
+    z-index: 5678;
+}
+
+#userAddressLine1 {
+    display: none;
+}
+
+#userAddressSearchAgainButton {
+    display: none;
+}
+
+.userBirthInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userBirthInput input {
+    text-align: center;
+}
