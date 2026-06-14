@@ -152,11 +152,14 @@
         const articleContentElement = document.getElementById("articleContent"); // 여행지 상세 본문 요소
         const highlightsElement = document.getElementById("articleHighlights"); // 여행지 하이라이트 요소
         // # 뒤 해시 값에 맞는 여행지 정보 화면에 표시
-        function renderDetail() {
+        function renderDetail(firstRender = false) {
             const hashKey = decodeURIComponent(location.hash.replace(/^#/, ""));
             const detailData = locationData[hashKey];
 
             if (!detailData) { /* Hash 값에 해당하는 데이터가 locationData에 없는 경우 */
+                if (firstRender !== true) { // firstRender가 true가 아닌 경우
+                    return; // 이미 렌더링된 상태에서 해시만 바뀐 경우에는 아무 것도 하지 않음 (예: #Seoul -> #)
+                }
                 titleElement.textContent = "여행지 정보를 찾을 수 없습니다.";
                 summaryElement.textContent = "죄송합니다. 요청하신 여행지의 상세 정보를 불러오는 데 문제가 발생했습니다.";
                 metaElement.textContent = hashKey ? `#${hashKey}` : "#";
@@ -192,7 +195,7 @@
 
         // 해시가 바뀌면 다시 렌더링. (기본적으로 브라우저는 해시 변경 시 새로고침하지 않음.)
         window.addEventListener("hashchange", renderDetail);
-        renderDetail();
+        renderDetail(true); 
     </script>
 </body>
 
