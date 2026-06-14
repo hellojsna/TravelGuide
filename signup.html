@@ -7,7 +7,7 @@
     <title>회원가입</title>
     <style>
         @import url("resources/css/main.css"); /* 공통 스타일 */
-        @import url("resources/css/signup.css"); /* signup.html 스타일 */
+        @import url("resources/css/auth.css"); /* auth.html 공통 스타일 */
     </style>
 </head>
 
@@ -15,7 +15,7 @@
     <header>
         <div class="headerTop">
             <a href="index.html">
-                <h1>여행지 추천</h1>
+                <img src="resources/images/TriplyLogoFull_White.svg" alt="Triply">
             </a>
             <input type="text" placeholder="여행지를 검색해보세요!" />
             <div id="authLinkContainer">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="headerBottom">
-            <a href="#">모든 여행지</a>
+            <a href="all-destinations.html">모든 여행지</a>
             <a href="#">테마별 추천</a>
             <a href="#">인기 여행지</a>
             <a href="#">새 여행지 등록</a>
@@ -44,13 +44,13 @@
             <div class="formItem required"><!-- 비밀번호 입력 (input type=text) -->
                 <span class="itemLabel">비밀번호</span>
                 <span class="formInput">
-                    <input type="text" id="userPW" name="userPW" placeholder="비밀번호를 입력해주세요" required>
+                    <input type="password" id="userPW" name="userPW" placeholder="비밀번호를 입력해주세요" required>
                 </span>
             </div>
             <div class="formItem required"><!-- 비밀번호 확인 입력 (input type=text) -->
                 <span class="itemLabel">비밀번호확인</span>
                 <span class="formInput">
-                    <input type="text" id="userPWCheck" name="userPWCheck" placeholder="비밀번호를 한번 더 입력해주세요" required>
+                    <input type="password" id="userPWCheck" name="userPWCheck" placeholder="비밀번호를 한번 더 입력해주세요" required>
                 </span>
             </div>
             <div class="formItem required"><!-- 이름 입력 (input type=text) -->
@@ -179,11 +179,28 @@
         </form>
     </main>
     <footer>
-        <p>여행지 추천 <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
+        <p>Triply <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
         <p>Copyright © 2026 Js Na. All rights reserved.</p>
     </footer>
     <script>
         /// form
+        
+        var userPW = document.getElementById("userPW"); // 비밀번호 input
+        userPW.addEventListener("blur", () => {
+            if (userPW.value.length < 8) { // 비밀번호 8자 미만이면 alert 표시 후 초기화
+                alert("비밀번호는 8자 이상 입력해주세요.");
+                userPW.value = "";
+            }
+        });
+
+        var userPWCheck = document.getElementById("userPWCheck"); // 비밀번호 확인 input
+        userPWCheck.addEventListener("blur", () => {
+            if (userPWCheck.value !== userPW.value) { // 비밀번호 확인 값 다르면 alert 표시 후 초기화
+                alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");
+                userPWCheck.value = "";
+            }
+        });
+
         var userEmailDomain = document.getElementById("userEmailDomain"); // 이메일 도메인 입력 input
         var userEmailDomainSelect = document.getElementById("userEmailDomainSelect"); // 이메일 도메인 선택
         userEmailDomainSelect.addEventListener("change", () => {
@@ -201,12 +218,13 @@
         var userPhone = document.getElementById("userPhone"); // 전화번호 input
         var userPhoneAuthButton = document.getElementById("userPhoneAuthButton"); // 인증번호 받기 버튼
         userPhone.addEventListener("input", () => {
-            const numberInput = userPhone.value;
+            let numberInput = userPhone.value;
             console.log(numberInput);
-            userPhone.value = numberInput.replaceAll(/\D/g, '');
-            if (numberInput.length > 0) {
+            userPhone.value = numberInput.replaceAll(/\D/g, ''); // 숫자 아니면 걸러내기
+            numberInput = userPhone.value; // 걸러낸 값으로 갱신
+            if (numberInput.length >= 7) { // 숫자가 7자 이상 있으면 버튼 활성화
                 userPhoneAuthButton.disabled = false;
-            } else {
+            } else { // 숫자가 없으면 버튼 비활성화
                 userPhoneAuthButton.disabled = true;
             }
         })
@@ -297,6 +315,24 @@
         };
         userAddressSearchButton.addEventListener("click", simulateAddressSearch);
         userAddressSearchAgainButton.addEventListener("click", simulateAddressSearch);
+
+        var userBirthY = document.getElementById("userBirthY");
+        var userBirthM = document.getElementById("userBirthM");
+        var userBirthD = document.getElementById("userBirthD");
+        [userBirthY, userBirthM, userBirthD].forEach((birthInput) => {
+            birthInput.addEventListener("input", () => {
+                birthInput.value = birthInput.value.replaceAll(/\D/g, '');
+            });
+            birthInput.addEventListener("blur", () => {
+                const expectedLength = birthInput.id === "userBirthY" ? 4 : 2;
+                if (birthInput.value.length !== expectedLength) {
+                    userBirthY.value = '';
+                    userBirthM.value = '';
+                    userBirthD.value = '';
+                    alert("생년월일을 정확히 입력해주세요.");
+                }
+            });
+        });
 
         // 이용약관 동의 체크박스
         var termsAll = document.getElementById("termsAll");

@@ -15,7 +15,7 @@
     <header>
         <div class="headerTop">
             <a href="index.html">
-                <h1>여행지 추천</h1>
+                <img src="resources/images/TriplyLogoFull_White.svg" alt="Triply">
             </a>
             <input type="text" placeholder="여행지를 검색해보세요!" />
             <div id="authLinkContainer">
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="headerBottom">
-            <a href="#">모든 여행지</a>
+            <a href="all-destinations.html">모든 여행지</a>
             <a href="#">테마별 추천</a>
             <a href="#">인기 여행지</a>
             <a href="#">새 여행지 등록</a>
@@ -51,10 +51,11 @@
         <img class="wideAd" src="resources/images/BannerAd.jpeg">
     </a>
     <section class="siteIntro">
-        <h2>여행지 추천 웹 사이트는</h2>
-        <p>다양한 여행 정보를 쉽게 확인할 수 있는 플랫폼입니다.<br>
-        다양한 여행지, 최고의 여행 시즌, 맛있는 음식, 그리고 필수 방문 명소 등<br>
-        자세한 정보를 알아보고 완벽한 여행을 계획해보세요.</p>
+        <img src="resources/images/TriplyLogoFull.svg" alt="Triply" class="siteIntroLogo">
+        <h2>Triply: 세 가지 기준으로 완성하는 나만의 여행.</h2>
+        <p>여행지는 많지만, 나에게 맞는 여행은 다릅니다.<br>
+        Triply는 취향, 상황, 목적이라는 세 가지 기준으로 사용자가 원하는 여행을 찾아주는 맞춤형 여행 추천 플랫폼입니다.<br>
+        다양한 여행지, 최고의 여행 시즌, 맛있는 음식 등 정보를 알아보고 완벽한 여행을 계획해보세요.</p>
     </section>
     <section class="cardSection">
         <div class="cardSectionHeader">
@@ -89,33 +90,115 @@
             <h2>실시간 인기 여행지</h2>
         </div>
         <div class="cardGrid">
-            <a class="card" href="#">
+            <a class="card" href="detail.html#Seoul">
                 <div class="cardImage seoul"></div>
                 <div class="cardText">
                     <h3>서울</h3>
                 </div>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="detail.html#Osaka">
                 <div class="cardImage osaka"></div>
                 <div class="cardText">
                     <h3>오사카</h3>
                 </div>
             </a>
-            <a class="card" href="#">
+            <a class="card" href="detail.html#Kyoto">
                 <div class="cardImage kyoto"></div>
                 <div class="cardText">
                     <h3>교토</h3>
                 </div>
             </a>
-            <a class="card more" href="#">
+            <a class="card more" href="all-destinations.html">
                 <h3>더보기</h3>
             </a>
         </div>
     </section>
     <footer>
-        <p>여행지 추천 <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
+        <p>Triply <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
         <p>Copyright © 2026 Js Na. All rights reserved.</p>
     </footer>
+    <div id="PopupDetailView">
+        <div class="popupContent">
+            <span class="closeButton">X</span>
+            <h2 id="popupTitle"></h2>
+            <p id="popupDesc"></p>
+            <hr>
+            <span id="popupDetail">
+
+            </span>
+            <div class="popupActions">
+                <a id="popupDetailLink" class="popupDetailLink" href="detail.html">자세히 보기</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // 배너 아이템 클릭 시 표시할 팝업 데이터
+        const popupDataList = { 
+            Seoul: {
+                popupTitle: "서울",
+                popupDetail: "서울은 한국의 수도로, 전통과 현대가 공존하는 도시입니다. 경복궁, 남산서울타워, 명동 같은 명소를 즐길 수 있습니다.",
+                detailPage: "detail.html#Seoul"
+            },
+            Osaka: {
+                popupTitle: "오사카",
+                popupDetail: "오사카는 먹거리와 활기찬 분위기로 유명한 도시입니다. 도톤보리, 오사카성, 유니버설 스튜디오 재팬을 중심으로 여행하기 좋습니다.",
+                detailPage: "detail.html#Osaka"
+            },
+            Kyoto: {
+                popupTitle: "교토",
+                popupDetail: "교토는 일본의 전통 문화를 가장 잘 느낄 수 있는 도시입니다. 사찰, 신사, 고즈넉한 골목길을 따라 걷는 여행에 잘 어울립니다.",
+                detailPage: "detail.html#Kyoto"
+            },
+            Jeju: {
+                popupTitle: "제주",
+                popupDetail: "제주는 자연 풍경이 아름다운 한국의 대표 여행지입니다. 한라산, 해안 도로, 오름과 해변을 함께 즐길 수 있습니다.",
+                detailPage: "detail.html#Jeju"
+            }
+        };
+
+        const popupView = document.getElementById("PopupDetailView"); // 팝업 전체 영역
+        const popupTitle = document.getElementById("popupTitle"); // 팝업 제목
+        const popupDesc = document.getElementById("popupDesc"); // 팝업 영문명
+        const popupDetail = document.getElementById("popupDetail"); // 팝업 상세 설명
+        const popupDetailLink = document.getElementById("popupDetailLink"); // 팝업 상세 페이지 링크
+        const closeButton = document.querySelector(".closeButton"); // 팝업 닫기 버튼
+
+        function openPopupByTitle(titleKey) {
+            const popupData = popupDataList[titleKey]; // itemTitle 기준으로 데이터 조회
+
+            if (!popupData) {
+                return;
+            }
+
+            popupTitle.textContent = popupData.popupTitle; // 한글 제목 넣기
+            popupDesc.textContent = titleKey; // 영문 명칭 넣기
+            popupDetail.textContent = popupData.popupDetail; // 상세 설명 넣기
+            popupDetailLink.href = popupData.detailPage || `detail.html#${encodeURIComponent(titleKey)}`; // 상세 페이지로 연결
+            popupView.classList.add("show"); // 팝업 표시
+        }
+
+        // 배너 아이템에 클릭 이벤트 리스너 등록
+        document.querySelectorAll(".mainBannerItem").forEach((bannerItem) => {
+            bannerItem.addEventListener("click", () => {
+                const itemTitle = bannerItem.querySelector(".itemTitle")?.textContent.trim(); // 클릭한 배너의 영문명 가져오기
+                if (itemTitle) {
+                    openPopupByTitle(itemTitle);
+                }
+            });
+        });
+
+        // 팝업 닫기 버튼 클릭 시
+        closeButton.addEventListener("click", () => {
+            popupView.classList.remove("show"); // 팝업 숨기기
+        });
+
+        // 팝업 외부 클릭 시
+        popupView.addEventListener("click", (event) => {
+            if (event.target === popupView) {
+                popupView.classList.remove("show"); // 바깥 영역 클릭 시 닫기
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>여행지 정보</title>
+    <style>
+        @import url("resources/css/main.css"); /* 공통 스타일 */
+        @import url("resources/css/detail.css"); /* detail.html 스타일 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="headerTop">
+            <a href="index.html">
+                <img src="resources/images/TriplyLogoFull_White.svg" alt="Triply">
+            </a>
+            <input type="text" placeholder="여행지를 검색해보세요!" />
+            <div id="authLinkContainer">
+                <a href="signin.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+        <div class="headerBottom">
+            <a href="all-destinations.html">모든 여행지</a>
+            <a href="#">테마별 추천</a>
+            <a href="#">인기 여행지</a>
+            <a href="#">새 여행지 등록</a>
+        </div>
+    </header>
+
+    <!-- 상세 본문 -->
+    <main class="detailPage">
+        <article class="detailArticle" id="detailArticle">
+            <!-- 여행지 제목 영역 -->
+            <header class="detailHeader" id="detailHeader">
+                <img id="detailHeadingImage" class="detailHeadingImage" />
+                <p class="detailEyebrow">Travel Guide</p>
+                <h1 id="articleTitle">여행지 정보를 불러오는 중입니다.</h1>
+                <p id="articleSummary" class="detailSummary"></p>
+                <p class="detailMeta" id="articleMeta"></p>
+            </header>
+
+            <!-- 여행지 소개 -->
+            <section class="articleBlock" aria-labelledby="articleStoryTitle">
+                <h2 id="articleStoryTitle">여행지 소개</h2>
+                <div id="articleContent" class="articleContent"></div>
+            </section>
+
+            <!-- 여행 포인트 -->
+            <section class="articleBlock" aria-labelledby="articleInfoTitle">
+                <h2 id="articleInfoTitle">여행 포인트</h2>
+                <dl id="articleHighlights" class="articleHighlights"></dl>
+            </section>
+        </article>
+    </main>
+    <footer class="detailFooter">
+        <a class="backLink" href="all-destinations.html">모든 여행지로 돌아가기</a>
+    </footer>
+    <script>
+        // 여행지별 상세 데이터
+        const locationData = {
+            Seoul: {
+                popupTitle: "서울",
+                imageSrc: "resources/images/Seoul_Banner_SDR.jpeg",
+                popupDetail: "서울은 한국의 수도로, 전통과 현대가 공존하는 도시입니다. 경복궁, 남산서울타워, 명동 같은 명소를 즐길 수 있습니다.",
+                articleContent: [
+                    {
+                        heading: "전통과 현대가 동시에 살아 있는 도시",
+                        body: "서울은 궁궐과 한옥, 대형 쇼핑가와 미식 공간이 한 도시에 모여 있는 곳입니다. 짧은 일정에도 다양한 분위기를 빠르게 경험할 수 있어 첫 여행지로도 잘 어울립니다."
+                    },
+                    {
+                        heading: "추천 동선",
+                        body: "낮에는 경복궁과 북촌을 걸으며 전통적인 풍경을 보고, 저녁에는 남산서울타워와 한강 주변을 찾아 도시 야경을 즐기는 구성이 좋습니다."
+                    }
+                ],
+                highlights: [
+                    ["대표 명소", "경복궁, 남산서울타워, 명동"],
+                    ["여행 분위기", "도시형, 역사, 야경"],
+                    ["추천 키워드", "처음 가는 한국 여행, 짧은 일정"]
+                ]
+            },
+            Osaka: {
+                popupTitle: "오사카",
+                imageSrc: "resources/images/Osaka_Banner_SDR.jpeg",
+                popupDetail: "오사카는 먹거리와 활기찬 분위기로 유명한 도시입니다. 도톤보리, 오사카성, 유니버설 스튜디오 재팬을 중심으로 여행하기 좋습니다.",
+                articleContent: [
+                    {
+                        heading: "먹거리와 거리 분위기를 함께 즐기는 도시",
+                        body: "오사카는 한 걸음마다 맛집과 상점이 이어지는 도시로, 걷는 재미가 분명합니다. 여행의 중심을 먹거리와 야경에 두고 싶을 때 만족도가 높습니다."
+                    },
+                    {
+                        heading: "추천 코스",
+                        body: "오전에는 오사카성을 둘러보고, 오후에는 신사이바시와 도톤보리를 따라 이동하면서 간식과 쇼핑을 함께 즐겨보세요."
+                    }
+                ],
+                highlights: [
+                    ["대표 명소", "도톤보리, 오사카성, 유니버설 스튜디오 재팬"],
+                    ["여행 분위기", "미식, 활기, 쇼핑"],
+                    ["추천 키워드", "친구 여행, 먹거리 중심 여행"]
+                ]
+            },
+            Kyoto: {
+                popupTitle: "교토",
+                imageSrc: "resources/images/Kyoto_Banner_SDR.jpeg",
+                popupDetail: "교토는 일본의 전통 문화를 가장 잘 느낄 수 있는 도시입니다. 사찰, 신사, 고즈넉한 골목길을 따라 걷는 여행에 잘 어울립니다.",
+                articleContent: [
+                    {
+                        heading: "천천히 걷는 여행에 잘 맞는 도시",
+                        body: "교토는 화려함보다 절제된 아름다움이 돋보입니다. 사찰과 신사를 잇는 길목마다 차분한 풍경이 이어져, 하루를 여유롭게 보내기 좋습니다."
+                    },
+                    {
+                        heading: "추천 감상 포인트",
+                        body: "아라시야마의 대나무 숲, 기온의 골목, 후시미이나리 신사처럼 걷는 경험 자체가 여행이 되는 장소들이 많습니다."
+                    }
+                ],
+                highlights: [
+                    ["대표 명소", "아라시야마, 기온, 후시미이나리 신사"],
+                    ["여행 분위기", "전통, 산책, 고요함"],
+                    ["추천 키워드", "사진 여행, 감성 여행"]
+                ]
+            },
+            Jeju: {
+                popupTitle: "제주",
+                imageSrc: "resources/images/Jeju_Banner_SDR.jpeg",
+                popupDetail: "제주는 자연 풍경이 아름다운 한국의 대표 여행지입니다. 한라산, 해안 도로, 오름과 해변을 함께 즐길 수 있습니다.",
+                articleContent: [
+                    {
+                        heading: "자연을 중심으로 여행 계획을 세우기 좋은 섬",
+                        body: "제주는 해변, 오름, 숲길, 카페까지 다양한 풍경이 넓게 퍼져 있어 렌터카 여행과 특히 잘 맞습니다. 계절마다 분위기가 달라 여러 번 찾아도 새롭습니다."
+                    },
+                    {
+                        heading: "추천 체류 방식",
+                        body: "동쪽과 서쪽을 나눠 일정을 짜면 이동 부담을 줄이면서 풍경과 휴식을 균형 있게 즐길 수 있습니다."
+                    }
+                ],
+                highlights: [
+                    ["대표 명소", "한라산, 해안 도로, 오름, 해변"],
+                    ["여행 분위기", "자연, 휴식, 드라이브"],
+                    ["추천 키워드", "가족 여행, 렌터카 여행"]
+                ]
+            }
+        };
+
+        // 상세 페이지에서 사용할 요소들
+        const detailHeadingImageElement = document.getElementById("detailHeadingImage"); // 헤더 배경 이미지 요소
+        const titleElement = document.getElementById("articleTitle"); // 여행지 제목 요소
+        const summaryElement = document.getElementById("articleSummary"); // 여행지 요약 요소
+        const metaElement = document.getElementById("articleMeta"); // 여행지 메타 정보 요소
+        const articleContentElement = document.getElementById("articleContent"); // 여행지 상세 본문 요소
+        const highlightsElement = document.getElementById("articleHighlights"); // 여행지 하이라이트 요소
+        // # 뒤 해시 값에 맞는 여행지 정보 화면에 표시
+        function renderDetail() {
+            const hashKey = decodeURIComponent(location.hash.replace(/^#/, ""));
+            const detailData = locationData[hashKey];
+
+            if (!detailData) { /* Hash 값에 해당하는 데이터가 locationData에 없는 경우 */
+                titleElement.textContent = "여행지 정보를 찾을 수 없습니다.";
+                summaryElement.textContent = "죄송합니다. 요청하신 여행지의 상세 정보를 불러오는 데 문제가 발생했습니다.";
+                metaElement.textContent = hashKey ? `#${hashKey}` : "#";
+                detailHeadingImageElement.removeAttribute("src");
+                articleContentElement.innerHTML = "";
+                highlightsElement.innerHTML = "";
+                return;
+            }
+
+            titleElement.textContent = detailData.popupTitle;
+            summaryElement.textContent = detailData.popupDetail;
+            metaElement.textContent = `#${hashKey}`;
+            detailHeadingImageElement.src = detailData.imageSrc;
+
+            articleContentElement.innerHTML = detailData.articleContent
+                .map((section) => `
+                    <section class="contentItem">
+                        <h3>${section.heading}</h3>
+                        <p>${section.body}</p>
+                    </section>
+                `)
+                .join("");
+
+            highlightsElement.innerHTML = detailData.highlights
+                .map(([term, description]) => `
+                    <div class="highlightItem">
+                        <dt>${term}</dt>
+                        <dd>${description}</dd>
+                    </div>
+                `)
+                .join("");
+        }
+
+        // 해시가 바뀌면 다시 렌더링. (기본적으로 브라우저는 해시 변경 시 새로고침하지 않음.)
+        window.addEventListener("hashchange", renderDetail);
+        renderDetail();
+    </script>
+</body>
+
+</html>

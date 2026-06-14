@@ -65,6 +65,10 @@ header {
     color: var(--themeColor); /* 헤더 하단 메뉴 링크에 커서 올렸을 때 테마 색상으로 변경 */
 }
 
+header img {
+    height: 2rem;
+    transform: scale(2); /* 로고 이미지 확대 (헤더 패딩 유지하면서 시각적으로 크게 보이게 하기 위함) */
+}
 header h1 {
     font-family: "GmarketSans", sans-serif;
     /* 헤더 로고 부분 텍스트 폰트 */

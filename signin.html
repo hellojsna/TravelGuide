@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        @import url("resources/css/main.css"); /* 공통 스타일 */
+        @import url("resources/css/auth.css"); /* auth.html 공통 스타일 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="headerTop">
+            <a href="index.html">
+                <img src="resources/images/TriplyLogoFull_White.svg" alt="Triply">
+            </a>
+            <input type="text" placeholder="여행지를 검색해보세요!" />
+            <div id="authLinkContainer">
+                <a href="signin.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+        <div class="headerBottom">
+            <a href="all-destinations.html">모든 여행지</a>
+            <a href="#">테마별 추천</a>
+            <a href="#">인기 여행지</a>
+            <a href="#">새 여행지 등록</a>
+        </div>
+    </header>
+    <main>
+        <form action="#" method="post" id="signinForm">
+            <h1>로그인</h1>
+            <p class="loginHelp">아이디와 비밀번호를 입력해 주세요.</p>
+            <hr>
+            <div class="formItem required">
+                <span class="itemLabel">아이디</span>
+                <span class="formInput">
+                    <input type="text" id="userID" name="userID" placeholder="아이디를 입력해주세요" required>
+                </span>
+            </div>
+            <div class="formItem required">
+                <span class="itemLabel">비밀번호</span>
+                <span class="formInput">
+                    <input type="password" id="userPW" name="userPW" placeholder="비밀번호를 입력해주세요" required>
+                </span>
+            </div>
+            <input type="submit" value="로그인" id="signinSubmitButton">
+            <div class="signinLinks">
+                <a href="#">아이디 찾기</a>
+                <a href="#">비밀번호 찾기</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <p>Triply <a href="#">이용약관</a> <a href="#">개인정보처리방침</a> <a href="#">고객센터</a></p>
+        <p>Copyright © 2026 Js Na. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

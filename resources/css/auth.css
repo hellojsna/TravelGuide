@@ -12,26 +12,37 @@ main button {
     width: 100%;
     height: 100%;
     border: none;
-    outline: 1px solid var(--purple);
+    outline: 1px solid var(--themeColor);
     border-radius: 3px;
-    color: var(--purple);
+    color: var(--themeColor);
     background: none;
     font-size: 1rem;
     text-align: center !important; /* important 안 붙이면 인증번호 받기 버튼 텍스트 왼쪽으로 붙음 */
     cursor: pointer;
 }
 
-#registerSubmitButton {
-    /* 회원가입 버튼 */
-    width: 50%;
-    background-color: var(--purple);
+#registerSubmitButton,
+#signinSubmitButton {
+    background-color: var(--themeColor);
     color: #fff;
     border: none;
     border-radius: 0;
+    cursor: pointer;
+}
+
+#registerSubmitButton {
+    /* 회원가입 버튼 */
+    width: 50%;
     margin-bottom: 10%; /* 버튼 하단 여백 */
     padding: 0.9rem 1.5rem;
     font-size: 1.1rem;
-    cursor: pointer;
+}
+
+#signinSubmitButton {
+    width: 50%;
+    margin: 1.5rem 0 3rem;
+    padding: 0.9rem 1.5rem;
+    font-size: 1.1rem;
 }
 
 button:disabled {
@@ -48,7 +59,7 @@ form {
     margin-top: 2rem; /* 상단 여백 */
 }
 
-form>.formItem {
+form > .formItem {
     /* form 하위 formItem class를 가진 요소 display 속성 grid로 정의. */
     display: grid;
     align-items: center; /* formItem 요소 하위 요소 중앙 정렬 */
@@ -58,12 +69,12 @@ form>.formItem {
     gap: 0.5em; /* formItem 하위 요소 간격 0.5em */
 }
 
-form>.formItem>* {
+form > .formItem > * {
     /* form 하위 formItem class 요소 하위 모든 요소의 텍스트 좌측 정렬 */
     text-align: left;
 }
 
-form>.formItem.required>.itemLabel::after,
+form > .formItem.required > .itemLabel::after,
 form .requiredHint::before {
     /* form 하위 formItem, required class를 모두 가진 요소 뒤에 별표 표시 */
     /* form 하위 requiredHint class를 가진 요소 (필수입력사항 안내) 앞에 별표 표시 */
@@ -122,7 +133,7 @@ form .requiredHint {
     outline: none !important;
 }
 
-.formInput>span>input[type=radio] {
+.formInput > span > input[type=radio] {
     width: auto;
 }
 
@@ -149,4 +160,30 @@ form .requiredHint {
 
 .userBirthInput input {
     text-align: center;
+}
+
+#signinForm {
+    margin-top: 4rem;
+}
+
+#signinForm h1 {
+    margin-bottom: 0.5rem;
+}
+
+#signinForm .loginHelp {
+    margin-bottom: 1.5rem;
+    color: #666666;
+    font-size: 0.95rem;
+}
+
+#signinForm .signinLinks {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#signinForm .signinLinks a {
+    color: var(--themeColor);
+    text-decoration: none;
 }

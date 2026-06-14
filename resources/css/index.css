@@ -27,6 +27,7 @@
     background-size: 30rem auto !important; /* 아래에서 background 선언하면 이것까지 무시되기 때문에 important 필요. */
     border-radius: 10px; /* 동글동글 */
     overflow: hidden; /* 이미지가 배너 아이템 밖으로 튀어나가지 않도록 */
+    cursor: pointer; /* 클릭할 수 있음을 나타내기 위해 커서 변경 */
 }
 
 /* 각 배너 아이템별 이미지와 커서 올렸을 때 표시할 대형 텍스트(한글/한자 svg). 한글/한자는 커서 올라가지 않은 상태에서 기본적으로 안 보여야 하기에 background size 0으로 지정. */
@@ -103,6 +104,11 @@
     padding: 2rem;
     text-align: center;
     margin-top: 2rem;
+}
+
+.siteIntro .siteIntroLogo {
+    height: 6rem;
+    margin-bottom: 1rem;
 }
 
 .siteIntro h2 {
@@ -206,4 +212,92 @@
     font-family: "GmarketSans", sans-serif;
     font-size: 1.5rem;
     font-weight: 500;
+}
+
+#PopupDetailView {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.55); /* 팝업 외부 살짝 어둡게 */
+    z-index: 5678; /* 다른 요소들보다 위에 표시되도록 z-index 앞으로 당기기 */
+}
+
+#PopupDetailView.show {
+    display: flex;
+}
+
+.popupContent {
+    position: relative;
+    width: min(42rem, 100%);
+    max-height: min(80vh, 48rem);
+    overflow: auto;
+    padding: 2rem;
+    border-radius: 18px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.popupContent h2 {
+    margin-bottom: 0.5rem;
+    font-family: "GmarketSans", sans-serif;
+    font-size: 1.8rem;
+    color: #333333;
+}
+
+.popupContent p {
+    margin-bottom: 1rem;
+    color: #666666;
+    font-size: 1rem;
+}
+
+.popupContent hr {
+    margin: 1rem 0;
+    border: 0;
+    border-top: 1px solid #e7e7ef;
+}
+
+#popupDetail {
+    display: block;
+    color: #444444;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.popupActions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.popupDetailLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 8.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 999px;
+    background: var(--themeColor);
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.closeButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 2rem;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: #f4f4f8;
+    color: #444444;
+    cursor: pointer;
+    user-select: none;
 }

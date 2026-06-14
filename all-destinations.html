@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모든 여행지</title>
+    <style>
+        @import url("resources/css/main.css"); /* 공통 스타일 */
+        @import url("resources/css/index.css"); /* index.html 스타일 */
+        @import url("resources/css/detail.css"); /* detail.html 스타일 */
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="headerTop">
+            <a href="index.html">
+                <img src="resources/images/TriplyLogoFull_White.svg" alt="Triply">
+            </a>
+            <input type="text" placeholder="여행지를 검색해보세요!" />
+            <div id="authLinkContainer">
+                <a href="signin.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+            </div>
+        </div>
+        <div class="headerBottom">
+            <a href="all-destinations.html">모든 여행지</a>
+            <a href="#">테마별 추천</a>
+            <a href="#">인기 여행지</a>
+            <a href="#">새 여행지 등록</a>
+        </div>
+    </header>
+
+    <main class="detailPage">
+        <article class="detailArticle">
+            <header class="detailHeader">
+                <p class="detailEyebrow">Travel Guide</p>
+                <h1>모든 여행지</h1>
+                <p class="detailSummary"></p>
+                <p class="detailMeta">4 destinations</p>
+            </header>
+
+            <section class="articleBlock" aria-labelledby="destinationListTitle">
+                <h2 id="destinationListTitle">여행지 목록</h2>
+                <div class="cardGrid">
+                    <a class="card" href="detail.html#Seoul">
+                        <div class="cardImage seoul"></div>
+                        <div class="cardText">
+                            <h3>서울</h3>
+                        </div>
+                    </a>
+                    <a class="card" href="detail.html#Osaka">
+                        <div class="cardImage osaka"></div>
+                        <div class="cardText">
+                            <h3>오사카</h3>
+                        </div>
+                    </a>
+                    <a class="card" href="detail.html#Kyoto">
+                        <div class="cardImage kyoto"></div>
+                        <div class="cardText">
+                            <h3>교토</h3>
+                        </div>
+                    </a>
+                    <a class="card" href="detail.html#Jeju">
+                        <div class="cardImage" style="background-image: url('resources/images/Jeju_Banner_SDR.jpeg');">
+                        </div>
+                        <div class="cardText">
+                            <h3>제주</h3>
+                        </div>
+                    </a>
+                </div>
+            </section>
+        </article>
+    </main>
+    <footer class="detailFooter">
+        <a class="backLink" href="index.html">메인으로 돌아가기</a>
+    </footer>
+</body>
+
+</html>
